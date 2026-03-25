@@ -1,6 +1,7 @@
 ## Contributor Covenant Code of Conduct
 
 ##Our Pledge
+
 We as members, contributors, and leaders pledge to make participation in our community a harassment-free experience for everyone,
 regardless of age, body size, visible or invisible disability, ethnicity, sex characteristics, gender identity and expression,
 level of experience, education, socio-economic status, nationality, personal appearance, race, religion,or sexual identity and orientation.
@@ -26,6 +27,7 @@ Examples of unacceptable behavior include:
 *Other conduct which could reasonably be considered inappropriate in a professional setting
 
 ## Enforcement Responsibilities
+
 Community leaders are responsible for clarifying and enforcing our standards of acceptable behavior and will take appropriate 
 and fair corrective action in response to any behaviorthat they deem inappropriate, threatening, offensive, or harmful.
 
@@ -34,17 +36,20 @@ and other contributions that are not aligned to this Code of Conduct, and will c
 when appropriate.
 
 ## Scope
+
 This Code of Conduct applies within all community spaces, and also applies when an individual is officially representing the 
 community in public spaces. Examples of representing our community include using an official e-mail address, posting via an 
 official social media account, or acting as an appointed representative at an online or offline event.
 
 ## Enforcement
+
 Instances of abusive, harassing, or otherwise unacceptable behavior may be reported to the community leaders responsible for 
 enforcement at Mauricio.yamjr@gmail.com. All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the reporter of any incident.
 
 ## Enforcement Guidelines
+
 Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in 
 violation of this Code of Conduct:
 
@@ -76,6 +81,7 @@ behavior, harassment of an individual, or aggression toward ordisparagement of c
 Consequence: A permanent ban from any sort of public interaction within the community.
 
 ## Attribution
+
 This Code of Conduct is adapted from the Contributor Covenant, version 2.0, available at 
 https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.
 
