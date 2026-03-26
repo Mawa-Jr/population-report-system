@@ -22,7 +22,7 @@ rectangle "Population Report System" {
 
 User --> UC5 : Requests report
 
-note left of UC5 : **Output:**\n- Continent\n- Total population\n- City population (%)\n- Non-city population (%)
+note right of UC5 : **Output:**\n- Continent\n- Total population\n- City population (%)\n- Non-city population (%)
 
 note left of UC5 : **Extensions:**\n- Database failure: Display error message\n- No data found: Display "No population data available"\n- Calculation error: Log error and notify user
 @enduml
