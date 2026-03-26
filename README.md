@@ -6,7 +6,7 @@
 | **Develop** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
 
 [![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
-**Code Coverage:** 84%
+![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 
 
 | ID | Name | Met | Screenshot |
