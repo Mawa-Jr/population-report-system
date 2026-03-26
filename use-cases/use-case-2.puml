@@ -1,0 +1,26 @@
+@startuml
+skinparam actor {
+  BorderColor DarkBlue
+  BackgroundColor LightBlue
+  FontSize 14
+}
+skinparam usecase {
+  BorderColor Green
+  BackgroundColor LightGreen
+  FontSize 14
+}
+skinparam titleFontSize 24
+skinparam noteBackgroundColor Yellow
+skinparam noteBorderColor DarkRed
+
+title USECASE2: View All Cities by Population
+
+actor "Data Analyst" as User
+rectangle "Population Report System" {
+  usecase "View All Cities by Population" as UC2
+}
+
+User --> UC2 : Requests report
+
+note RIGHT of UC2: **Extensions:**\n- Database failure: Show error\n- No data: Display "No cities found"
+@enduml
