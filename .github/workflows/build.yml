@@ -1,4 +1,4 @@
-name: Population report system
+name: Mawa-Jr Population report system
 
 on:
   push:
