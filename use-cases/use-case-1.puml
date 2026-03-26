@@ -1,0 +1,26 @@
+@startuml
+skinparam actor {
+  BorderColor DarkBlue
+  BackgroundColor LightBlue
+  FontSize 14
+}
+skinparam usecase {
+  BorderColor Green
+  BackgroundColor LightGreen
+  FontSize 14
+}
+skinparam titleFontSize 24
+skinparam noteBackgroundColor Yellow
+skinparam noteBorderColor DarkRed
+
+title USECASE1: View All Countries by Population
+
+actor "Data Analyst" as User
+rectangle "Population Report System" {
+  usecase "View All Countries by Population" as UC1
+}
+
+User --> UC1 : Requests report
+
+note RIGHT of UC1: **Extensions:**\n- Database failure: Show error\n- No data: Display "No countries found"
+@enduml
