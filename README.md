@@ -2,8 +2,8 @@
 
 | Branch | Build Status |
 |--------|--------------|
-| **master** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
-| **develop** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
+| **Master** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
+| **Develop** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
 
 [![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
 
