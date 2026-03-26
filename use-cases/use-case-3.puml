@@ -1,0 +1,28 @@
+@startuml
+skinparam actor {
+  BorderColor DarkBlue
+  BackgroundColor LightBlue
+  FontSize 14
+}
+skinparam usecase {
+  BorderColor Green
+  BackgroundColor LightGreen
+  FontSize 14
+}
+skinparam titleFontSize 24
+skinparam noteBackgroundColor Yellow
+skinparam noteBorderColor DarkRed
+
+title USECASE#3: View Top N Cities by Population
+
+actor "Data Analyst" as User
+rectangle "Population Report System" {
+  usecase "View Top N Cities by Population" as UC3
+}
+
+User --> UC3 : Enter N
+
+note right of UC3 : **Output:**\n- Top N cities\n- Name\n- Country Code\n- District\n- Population
+
+note left of UC3 : **Extensions:**\n- Invalid input: Display error\n- Database failure: Display error\n- No City Data found\n- N > total cities: Show all cities
+@enduml

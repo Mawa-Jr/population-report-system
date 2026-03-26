@@ -1,0 +1,28 @@
+@startuml
+skinparam actor {
+  BorderColor DarkBlue
+  BackgroundColor LightBlue
+  FontSize 14
+}
+skinparam usecase {
+  BorderColor Green
+  BackgroundColor LightGreen
+  FontSize 14
+}
+skinparam titleFontSize 24
+skinparam noteBackgroundColor Yellow
+skinparam noteBorderColor DarkRed
+
+title USECASE#5: View Population Breakdown by Continent
+
+actor "Data Analyst" as User
+rectangle "Population Report System" {
+  usecase "View Population Breakdown by Continent" as UC5
+}
+
+User --> UC5 : Requests report
+
+note right of UC5 : **Output:**\n- Continent\n- Total population\n- City population (%)\n- Non-city population (%)
+
+note left of UC5 : **Extensions:**\n- Database failure: Display error message\n- No data found: Display "No population data available"\n- Calculation error: Log error and notify user
+@enduml
