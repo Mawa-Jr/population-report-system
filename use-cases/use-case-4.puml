@@ -1,0 +1,26 @@
+@startuml
+skinparam actor {
+  BorderColor DarkBlue
+  BackgroundColor LightBlue
+  FontSize 14
+}
+skinparam usecase {
+  BorderColor Green
+  BackgroundColor LightGreen
+  FontSize 14
+}
+skinparam titleFontSize 24
+skinparam noteBackgroundColor Yellow
+skinparam noteBorderColor DarkRed
+
+title USECASE4: View Capital Cities by Continent
+
+actor "Data Analyst" as User
+rectangle "Population Report System" {
+  usecase "View Capital Cities by Continent" as UC4
+}
+
+User --> UC4 : Enter Continent
+
+note right of UC4: **Extensions:**\n- Invalid continent: Show error\n- Database failure: Show error\n- No capitals: Display "No capitals found"
+@enduml
