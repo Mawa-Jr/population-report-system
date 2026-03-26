@@ -4,9 +4,9 @@
 |--------|--------------|
 | **Master** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
 | **Develop** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
-![Code Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen)
-[![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
 
+[![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
+![Code Coverage](https://img.shields.io/badge/coverage-84%25-brightgreen)
 
 
 | ID | Name | Met | Screenshot |
