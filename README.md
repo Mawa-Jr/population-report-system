@@ -11,5 +11,5 @@
 
 | ID | Name | Met | Screenshot |
 |----|------|-----|------------|
-| 1 | All countries in the world organised by largest population to smallest | Yes | ![Report 1](Report%20One.jpg) |
+| 1 | All countries in the world organised by largest population to smallest | Yes | ![Report 1](Report%201.jpg) |
 
