@@ -8,6 +8,8 @@
 [![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
 ![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 
+## Reports Completed
+1 out of 5 reports have been met
 
 | ID | Name | Met | Screenshot |
 |----|------|-----|------------|
