@@ -13,7 +13,7 @@ skinparam titleFontSize 24
 skinparam noteBackgroundColor Yellow
 skinparam noteBorderColor DarkRed
 
-title USECASE1: View All Countries by Population
+title USECASE#1: View All Countries by Population
 
 actor "Data Analyst" as User
 rectangle "Population Report System" {
@@ -22,5 +22,7 @@ rectangle "Population Report System" {
 
 User --> UC1 : Requests report
 
-note RIGHT of UC1: **Extensions:**\n- Database failure: Show error\n- No data: Display "No countries found"
+note right of UC1 : **Output:**\n- Code\n- Name\n- Continent\n- Region\n- Population\n- Capital
+
+note left of UC1 : **Extensions:**\n- Database failure: Display error\n- No data: Display "No countries found"
 @enduml
