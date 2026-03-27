@@ -10,8 +10,13 @@ public class AppTest {
         int total = App.getTotalCountries();
         assertTrue(total > 0, "Total countries should be greater than 0");
     }
-
     @Test
+    public void testGetTotalCities() {
+        // Test that getTotalCities returns a number
+        int total = App.getTotalCities();
+        assertTrue(total > 0, "Total cities should be greater than 0");
+    }
+        @Test
     public void testGetAllCountriesByPopulation() {
         assertDoesNotThrow(() -> App.getAllCountriesByPopulation());
     }

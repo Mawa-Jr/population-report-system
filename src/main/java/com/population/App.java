@@ -15,7 +15,11 @@ public class App {
         System.out.println("--- REPORT 1: All Countries by Population (Largest to Smallest) ---");
         getAllCountriesByPopulation();
 
-        System.out.println("\n REPORT 1 COMPLETE!");
+        // Report 2
+        System.out.println("\n--- REPORT 2: All Cities by Population (Largest to Smallest) ---");
+        getAllCitiesByPopulation();
+
+        System.out.println("\n REPORTS 1-2 COMPLETE!");
     }
 
     // ==================== REPORT 1 ====================
@@ -57,9 +61,59 @@ public class App {
         }
     }
 
-    // Helper method for Report 1
     public static int getTotalCountries() {
         String sql = "SELECT COUNT(*) FROM country";
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // ==================== REPORT 2 ====================
+    // All cities in the world organised by largest population to smallest
+    public static void getAllCitiesByPopulation() {
+        String sql = "SELECT Name, CountryCode, District, Population " +
+                "FROM city " +
+                "ORDER BY Population DESC";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            System.out.printf("%-35s %-15s %-35s %-15s%n",
+                    "City Name", "Country Code", "District", "Population");
+            System.out.println("--------------------------------------------------------------------------------------------------------");
+
+            int count = 0;
+            while (rs.next() && count < 20) {
+                String name = rs.getString("Name");
+                String countryCode = rs.getString("CountryCode");
+                String district = rs.getString("District");
+                long population = rs.getLong("Population");
+
+                System.out.printf("%-35s %-15s %-35s %-15d%n",
+                        name, countryCode, district, population);
+                count++;
+            }
+
+            if (count == 20) {
+                System.out.println("\n(Showing first 20 cities. Total cities: " + getTotalCities() + ")");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static int getTotalCities() {
+        String sql = "SELECT COUNT(*) FROM city";
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
