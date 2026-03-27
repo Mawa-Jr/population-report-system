@@ -14,4 +14,5 @@
 | ID | Name | Met | Screenshot |
 |----|------|-----|------------|
 | 1 | All countries in the world organised by largest population to smallest | Yes | ![Report 1](Report%201.jpg) |
+| 2 | All cities in the world organised by largest population to smallest | Yes | ![Report 2](Report%2002.jpg) |
 
