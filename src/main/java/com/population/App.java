@@ -1,6 +1,7 @@
 package com.population;
 
 import java.sql.*;
+import java.util.Scanner;
 
 public class App {
     // Database connection settings
@@ -19,7 +20,11 @@ public class App {
         System.out.println("\n--- REPORT 2: All Cities by Population (Largest to Smallest) ---");
         getAllCitiesByPopulation();
 
-        System.out.println("\n REPORTS 1-2 COMPLETE!");
+        // Report 3
+        System.out.println("\n--- REPORT 3: Top N Cities by Population ---");
+        getTopNCitiesByPopulation();
+
+        System.out.println("\n REPORTS 1-3 COMPLETE!");
     }
 
     // ==================== REPORT 1 ====================
@@ -38,7 +43,7 @@ public class App {
             System.out.println("--------------------------------------------------------------------------------------------------------");
 
             int count = 0;
-            while (rs.next() && count < 20) {
+            while (rs.next()) {
                 String code = rs.getString("Code");
                 String name = rs.getString("Name");
                 String continent = rs.getString("Continent");
@@ -49,10 +54,6 @@ public class App {
                 System.out.printf("%-5s %-30s %-15s %-20s %-15d %-10d%n",
                         code, name, continent, region, population, capital);
                 count++;
-            }
-
-            if (count == 20) {
-                System.out.println("\n(Showing first 20 of " + getTotalCountries() + " countries)");
             }
 
         } catch (SQLException e) {
@@ -78,32 +79,29 @@ public class App {
     // ==================== REPORT 2 ====================
     // All cities in the world organised by largest population to smallest
     public static void getAllCitiesByPopulation() {
-        String sql = "SELECT Name, CountryCode, District, Population " +
+        String sql = "SELECT city.Name, country.Name AS Country, city.District, city.Population " +
                 "FROM city " +
-                "ORDER BY Population DESC";
+                "JOIN country ON city.CountryCode = country.Code " +
+                "ORDER BY city.Population DESC";
 
         try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
             System.out.printf("%-35s %-15s %-35s %-15s%n",
-                    "City Name", "Country Code", "District", "Population");
+                    "City Name", "Country", "District", "Population");
             System.out.println("--------------------------------------------------------------------------------------------------------");
 
             int count = 0;
-            while (rs.next() && count < 20) {
+            while (rs.next()) {
                 String name = rs.getString("Name");
-                String countryCode = rs.getString("CountryCode");
+                String country = rs.getString("Country");
                 String district = rs.getString("District");
                 long population = rs.getLong("Population");
 
                 System.out.printf("%-35s %-15s %-35s %-15d%n",
-                        name, countryCode, district, population);
+                        name, country, district, population);
                 count++;
-            }
-
-            if (count == 20) {
-                System.out.println("\n(Showing first 20 cities. Total cities: " + getTotalCities() + ")");
             }
 
         } catch (SQLException e) {
@@ -125,4 +123,62 @@ public class App {
         }
         return 0;
     }
+    // ==================== REPORT 3 ====================
+    // Top N populated cities in the world where N is provided by the user
+    public static void getTopNCitiesByPopulation() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of top cities to display (N): ");
+
+        int n;
+        try {
+            n = Integer.parseInt(scanner.nextLine());
+            if (n <= 0) {
+                System.out.println("Please enter a positive number.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a valid number.");
+            return;
+        }
+
+        String sql = "SELECT city.Name, country.Name AS Country, city.District, city.Population " +
+                "FROM city " +
+                "JOIN country ON city.CountryCode = country.Code " +
+                "ORDER BY city.Population DESC " +
+                "LIMIT ?";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, n);
+            ResultSet rs = pstmt.executeQuery();
+
+            System.out.printf("\n%-35s %-15s %-35s %-15s%n",
+                    "City Name", "Country", "District", "Population");
+            System.out.println("--------------------------------------------------------------------------------------------------------");
+
+            int count = 0;
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String country = rs.getString("Country");
+                String district = rs.getString("District");
+                long population = rs.getLong("Population");
+
+                System.out.printf("%-35s %-15s %-35s %-15d%n",
+                        name, country, district, population);
+                count++;
+            }
+
+            if (count == 0) {
+                System.out.println("No cities found.");
+            } else {
+                System.out.println("\n(Showing top " + count + " cities)");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 }
