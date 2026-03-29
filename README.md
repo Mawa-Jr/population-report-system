@@ -15,4 +15,5 @@
 |----|------|-----|------------|
 | 1 | All countries in the world organised by largest population to smallest | Yes | ![Report 1](Report%201.jpg) |
 | 2 | All cities in the world organised by largest population to smallest | Yes | ![Report 2](Report%202.jpg) |
+| 3 | The top N populated cities in the world where N is provided by the user | Yes | ![Report 3](Report%203.jpg) |
 
