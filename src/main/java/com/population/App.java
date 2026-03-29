@@ -38,7 +38,7 @@ public class App {
             System.out.println("--------------------------------------------------------------------------------------------------------");
 
             int count = 0;
-            while (rs.next() && count < 20) {
+            while (rs.next()) {
                 String code = rs.getString("Code");
                 String name = rs.getString("Name");
                 String continent = rs.getString("Continent");
@@ -49,10 +49,6 @@ public class App {
                 System.out.printf("%-5s %-30s %-15s %-20s %-15d %-10d%n",
                         code, name, continent, region, population, capital);
                 count++;
-            }
-
-            if (count == 20) {
-                System.out.println("\n(Showing first 20 of " + getTotalCountries() + " countries)");
             }
 
         } catch (SQLException e) {
@@ -91,7 +87,7 @@ public class App {
             System.out.println("--------------------------------------------------------------------------------------------------------");
 
             int count = 0;
-            while (rs.next() && count < 20) {
+            while (rs.next()) {
                 String name = rs.getString("Name");
                 String countryCode = rs.getString("CountryCode");
                 String district = rs.getString("District");
@@ -100,10 +96,6 @@ public class App {
                 System.out.printf("%-35s %-15s %-35s %-15d%n",
                         name, countryCode, district, population);
                 count++;
-            }
-
-            if (count == 20) {
-                System.out.println("\n(Showing first 20 cities. Total cities: " + getTotalCities() + ")");
             }
 
         } catch (SQLException e) {
