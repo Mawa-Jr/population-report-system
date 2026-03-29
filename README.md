@@ -9,9 +9,10 @@
 ![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 
 ## Reports Completed
-1 out of 5 reports have been met
+2 out of 5 reports have been met
 
 | ID | Name | Met | Screenshot |
 |----|------|-----|------------|
 | 1 | All countries in the world organised by largest population to smallest | Yes | ![Report 1](Report%201.jpg) |
+| 2 | All cities in the world organised by largest population to smallest | Yes | ![Report 2](Report%202.jpg) |
 
