@@ -6,25 +6,29 @@ import java.util.Scanner;
 public class App {
     // Database connection settings
     private static final String URL = "jdbc:mysql://host.docker.internal:3307/world";
-    private static final String USER = "root";
+    private static final String USER = "docker";
     private static final String PASSWORD = "";
 
     public static void main(String[] args) {
-        System.out.println("=== POPULATION REPORT SYSTEM ===\n");
+        System.out.println("POPULATION REPORT SYSTEM\n");
 
         // Report 1
-        System.out.println("--- REPORT 1: All Countries by Population (Largest to Smallest) ---");
+        System.out.println("--- REPORT 1: View all Countries by Population (Largest to Smallest) ---");
         getAllCountriesByPopulation();
 
         // Report 2
-        System.out.println("\n--- REPORT 2: All Cities by Population (Largest to Smallest) ---");
+        System.out.println("\n--- REPORT 2: View all Cities by Population (Largest to Smallest) ---");
         getAllCitiesByPopulation();
 
         // Report 3
-        System.out.println("\n--- REPORT 3: Top N Cities by Population ---");
+        System.out.println("\n--- REPORT 3: View all Top N Cities by Population ---");
         getTopNCitiesByPopulation();
 
-        System.out.println("\n REPORTS 1-3 COMPLETE!");
+        // Report 4
+        System.out.println("\n--- REPORT 4: View all Capital Cities by Continent ---");
+        getCapitalsByContinent();
+
+        System.out.println("\n REPORTS 1-4 COMPLETE!");
     }
 
     // ==================== REPORT 1 ====================
@@ -123,6 +127,7 @@ public class App {
         }
         return 0;
     }
+
     // ==================== REPORT 3 ====================
     // Top N populated cities in the world where N is provided by the user
     public static void getTopNCitiesByPopulation() {
@@ -180,4 +185,71 @@ public class App {
             e.printStackTrace();
         }
     }
+
+    // ==================== REPORT 4 ====================
+// All capital cities in a continent organised by largest population to smallest
+    public static void getCapitalsByContinent() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter continent (e.g., Asia, Europe, Africa, North America, South America, Australia, Antarctica): ");
+        String continentInput = scanner.nextLine().trim();
+
+        if (continentInput.isEmpty()) {
+            System.out.println("Please enter a continent.");
+            return;
+        }
+
+        String continent = null;
+        String[] continents = {"Asia", "Europe", "Africa", "North America", "South America", "Australia", "Antarctica"};
+
+        for (String c : continents) {
+            if (c.equalsIgnoreCase(continentInput)) {
+                continent = c;
+                break;
+            }
+        }
+
+        if (continent == null) {
+            System.out.println("Invalid continent. Try: Asia, Europe, Africa, North America, South America, Australia, Antarctica");
+            return;
+        }
+
+        String sql = "SELECT city.Name, country.Name AS Country, city.Population " +
+                "FROM city " +
+                "JOIN country ON city.CountryCode = country.Code " +
+                "WHERE city.ID = country.Capital AND country.Continent = ? " +
+                "ORDER BY city.Population DESC";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, continent);
+            ResultSet rs = pstmt.executeQuery();
+
+            System.out.printf("\n%-40s %-30s %-15s%n",
+                    "Capital City", "Country", "Population");
+            System.out.println("--------------------------------------------------------------");
+
+            int count = 0;
+            while (rs.next()) {
+                String name = rs.getString("Name");
+                String country = rs.getString("Country");
+                long population = rs.getLong("Population");
+
+                System.out.printf("%-40s %-30s %-15d%n",
+                        name, country, population);
+                count++;
+            }
+
+            if (count == 0) {
+                System.out.println("No capital cities found for continent: " + continent);
+            } else {
+                System.out.println("\n(Found " + count + " capital cities in " + continent + ")");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 }
