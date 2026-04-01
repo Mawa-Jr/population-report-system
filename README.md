@@ -1,5 +1,7 @@
 # population-report-system
 
+---
+
 | Branch | Build Status |
 |--------|--------------|
 | **Master** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
@@ -9,6 +11,8 @@
 ![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 
 ## Reports Completed
+
+---
 4 out of 5 reports have been met
 
 | ID | Name | Met | Screenshot                  |
