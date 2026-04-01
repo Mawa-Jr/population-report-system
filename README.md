@@ -9,7 +9,7 @@
 ![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 
 ## Reports Completed
-3 out of 5 reports have been met
+4 out of 5 reports have been met
 
 | ID | Name | Met | Screenshot                  |
 |----|------|-----|-----------------------------|
