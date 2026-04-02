@@ -28,10 +28,14 @@ public class App {
         System.out.println("\n--- REPORT 4: View all Capital Cities by Continent ---");
         getCapitalsByContinent();
 
-        System.out.println("\n REPORTS 1-4 COMPLETE!");
+        // Report 5
+        System.out.println("\n--- REPORT 5: Population Breakdown by Continent ---");
+        getPopulationBreakdownByContinent();
+
+        System.out.println("\n REPORTS 1-5 COMPLETE!");
     }
 
-    // ==================== REPORT 1 ====================
+    // REPORT 1
     // All countries in the world organised by largest population to smallest
     public static void getAllCountriesByPopulation() {
         String sql = "SELECT Code, Name, Continent, Region, Population, Capital " +
@@ -80,7 +84,7 @@ public class App {
         return 0;
     }
 
-    // ==================== REPORT 2 ====================
+    // REPORT 2
     // All cities in the world organised by largest population to smallest
     public static void getAllCitiesByPopulation() {
         String sql = "SELECT city.Name, country.Name AS Country, city.District, city.Population " +
@@ -128,7 +132,7 @@ public class App {
         return 0;
     }
 
-    // ==================== REPORT 3 ====================
+    // REPORT 3
     // Top N populated cities in the world where N is provided by the user
     public static void getTopNCitiesByPopulation() {
         Scanner scanner = new Scanner(System.in);
@@ -186,8 +190,8 @@ public class App {
         }
     }
 
-    // ==================== REPORT 4 ====================
-// All capital cities in a continent organised by largest population to smallest
+    // REPORT 4
+    // All capital cities in a continent organised by largest population to smallest
     public static void getCapitalsByContinent() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter continent (e.g., Asia, Europe, Africa, North America, South America, Australia, Antarctica): ");
@@ -227,7 +231,7 @@ public class App {
 
             System.out.printf("\n%-40s %-30s %-15s%n",
                     "Capital City", "Country", "Population");
-            System.out.println("--------------------------------------------------------------");
+            System.out.println("-------------------------------------------------------------------------------------------------------");
 
             int count = 0;
             while (rs.next()) {
@@ -244,6 +248,52 @@ public class App {
                 System.out.println("No capital cities found for continent: " + continent);
             } else {
                 System.out.println("\n(Found " + count + " capital cities in " + continent + ")");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // REPORT 5
+    // Population breakdown by continent (total, city, non-city with percentages)
+    public static void getPopulationBreakdownByContinent() {
+        String sql = "SELECT " +
+                "    continent, " +
+                "    SUM(country.Population) AS total_population, " +
+                "    COALESCE(SUM(city_population.city_pop), 0) AS city_population " +
+                "FROM country " +
+                "LEFT JOIN ( " +
+                "    SELECT CountryCode, SUM(Population) AS city_pop " +
+                "    FROM city " +
+                "    GROUP BY CountryCode " +
+                ") AS city_population ON country.Code = city_population.CountryCode " +
+                "GROUP BY continent " +
+                "ORDER BY total_population DESC";
+
+        try (Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            System.out.printf("%-20s %-20s %-30s %-30s%n",
+                    "Continent", "Total Population", "City Population (%)", "Non-City Population (%)");
+            System.out.println("--------------------------------------------------------------------------------------------------------");
+
+            while (rs.next()) {
+                String continent = rs.getString("continent");
+                long totalPopulation = rs.getLong("total_population");
+                long cityPopulation = rs.getLong("city_population");
+                long nonCityPopulation = totalPopulation - cityPopulation;
+
+                double cityPercent = (totalPopulation > 0) ? (cityPopulation * 100.0 / totalPopulation) : 0;
+                double nonCityPercent = (totalPopulation > 0) ? (nonCityPopulation * 100.0 / totalPopulation) : 0;
+
+                System.out.printf("%-20s %, -20d %, -20d (%.2f%%)   %, -20d (%.2f%%)%n",
+                        continent,
+                        totalPopulation,
+                        cityPopulation, cityPercent,
+                        nonCityPopulation, nonCityPercent);
             }
 
         } catch (SQLException e) {
