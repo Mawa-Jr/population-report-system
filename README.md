@@ -23,3 +23,6 @@
 | 3 | The top N populated cities in the world where N is provided by the user | Yes | ![Report 3](Report%203.jpg) |
 | 4 | All capital cities in a continent organised by largest population to smallest | Yes | ![Report 4](Report%204.jpg) |
 | 5 | The population of people, people living in cities, and people not living in cities in each continent | Yes | ![Report 5](Report%205.jpg) |
+
+## Run with Docker
+docker run -it --add-host=host.docker.internal:host-gateway population-report
