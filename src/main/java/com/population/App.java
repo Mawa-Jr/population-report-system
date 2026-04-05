@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class App {
     // Database connection settings
-    private static final String URL = "jdbc:mysql://host.docker.internal:3307/world";
-    private static final String USER = "docker";
-    private static final String PASSWORD = "";
+    private static final String URL = System.getenv().getOrDefault("DB_URL", "jdbc:mysql://localhost:3306/world");
+    private static final String USER = System.getenv().getOrDefault("DB_USER", "root");
+    private static final String PASSWORD = System.getenv().getOrDefault("DB_PASSWORD", "");
+
 
     public static void main(String[] args) {
         System.out.println("POPULATION REPORT SYSTEM\n");
