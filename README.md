@@ -9,7 +9,7 @@
 
 [![License](https://img.shields.io/github/license/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
 ![Code Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen)
-[![GitHub release](https://img.shields.io/github/v/release/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/releases/tag/v1.0.0)
+[![GitHub release](https://img.shields.io/github/v/release/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/releases/tag/v1.0.1)
 
 ## Reports Completed
 
