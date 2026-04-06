@@ -21,9 +21,4 @@ services:
       DB_URL: jdbc:mysql://mysql:3306/world
       DB_USER: root
       DB_PASSWORD: root
-    command: >
-      sh -c "
-        echo 'Waiting for MySQL...' &&
-        sleep 20 &&
-        java -jar app.jar
-      "
+    command: ["sh", "-c", "sleep 60 && java -jar app.jar"]
