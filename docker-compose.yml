@@ -24,6 +24,5 @@ services:
     command: >
       sh -c "
         echo 'Waiting for MySQL...' &&
-        sleep 20 &&
-        java -jar app.jar
-      "
+        while ! timeout 1 bash -c 'echo > /dev/tcp/mysql/3306' 2>/dev/null; do sleep 2; done &&
+        java -jar app.jar"
