@@ -8,8 +8,13 @@
 | **Develop** | [![Build Status](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Mawa-Jr/population-report-system/actions/workflows/build.yml) |
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-green)](https://github.com/Mawa-Jr/population-report-system/blob/master/LICENSE)
-![Code Coverage](https://img.shields.io/badge/Coverage-100%25-brightgreen)
+![Code Coverage](https://img.shields.io/badge/Coverage-84%25-brightgreen)
 [![GitHub release](https://img.shields.io/github/v/release/Mawa-Jr/population-report-system)](https://github.com/Mawa-Jr/population-report-system/releases/tag/v1.0.1)
+
+## Running App Interactively
+
+---
+Command: docker compose run --rm app
 
 ## Reports Completed
 
